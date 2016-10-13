@@ -58,7 +58,7 @@ def load_loci(loci):
     :param loci:cuffcompare输出的loci文件
     :return: 一个嵌套数组的字典
     '''
-    sys.stdout.write("[{0}] {1} loading\n".format(ltime(),loci))
+    sys.stdout.write("[{0}] {1} loading\n".format(ltime(),os.path.basename(loci)))
     tmpdir = {}
     for line in open(loci,"r"):
         if not line.startswith("#"):
@@ -81,7 +81,7 @@ def load_loci(loci):
                     tmpdir["PD+GD"].append(gids)
                 except KeyError:
                     tmpdir["PD+GD"] = [gids]
-    sys.stdout.write("[{0}] {1} loading successfuly\n".format(ltime(),loci))
+    sys.stdout.write("[{0}] {1} loading successfuly\n".format(ltime(),os.path.basename(loci)))
     return tmpdir
 
 def exon_count(gff,loci):
